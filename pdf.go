@@ -20,7 +20,7 @@ func init() {
 
 //Encode SVG to PNG as image.Image
 func decode(input []byte) (image.Image, error) {
-	cmd := exec.Command("gs", "dSAFER", "dNOPAUSE", "-r100x100", "-sDEVICE=png16m", "-dLastPage=1", "-q", `-sOutputFile=%stdout`, "-")
+	cmd := exec.Command("gs", "-r100x100", "-sDEVICE=png16m", "-dLastPage=1", "-q", `-sOutputFile=%stdout`, "-")
 	var out bytes.Buffer
 	cmd.Stdout = &out
 	cmd.Stdin = strings.NewReader(string(input))
